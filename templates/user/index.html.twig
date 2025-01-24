@@ -4,6 +4,7 @@
 
 {% block body %}
 
+    <p><a class="btn btn-primary btn-sm" href="{{ path('user.create') }}">Creer un utilisateur</a></p>
     <table class="table">
         <thead>
         <tr>
@@ -18,7 +19,13 @@
                 <a href="{{ path('user.show', {id: user.getId() }) }}">{{ user.getUserName() }}</a>
             </td>
             <td>
-                <a class="btn btn-primary" href="{{ path('user.edit', {id: user.getId() }) }}">Editer</a>
+                <div class="d-flex gap-1">
+                    <a class="btn btn-primary btn-sm" href="{{ path('user.edit', {id: user.getId() }) }}">Editer</a>
+                    <form action="{{ path('user.delete', {id: user.getId()}) }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-sm">supprimer</button>
+                    </form>
+                </div>
             </td>
         </tr>
         {% endfor %}
