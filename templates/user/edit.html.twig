@@ -5,9 +5,6 @@
 {% block body %}
 
     <h1>{{ user.getUserName() }}</h1>
-
-    
-    {{ user.getCreatedAt()|date('Y-m-d H:i:s') }}
-    
+    {{ form(form) }}
 
 {% endblock %}

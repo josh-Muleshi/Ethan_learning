@@ -4,12 +4,25 @@
 
 {% block body %}
 
-    <ul>
-    {% for user in users %}
-        <li>
-            <a href="{{ path('user.show', {id: user.getId() }) }}">{{ user.getUserName() }}</a>
-        </li>
-    {% endfor %}
-    </ul>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Action<th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+        <tr>
+            <td>
+                <a href="{{ path('user.show', {id: user.getId() }) }}">{{ user.getUserName() }}</a>
+            </td>
+            <td>
+                <a class="btn btn-primary" href="{{ path('user.edit', {id: user.getId() }) }}">Editer</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
